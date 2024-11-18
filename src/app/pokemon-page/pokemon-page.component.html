@@ -1,0 +1,65 @@
+<div class="pokemon-page">
+  <h2>Pokemon Information</h2>
+
+  <label for="pokemon-select">Select a Pokemon:</label>
+  <select id="pokemon-select" [(ngModel)]="selectedPokemon" (ngModelChange)="onPokemonSelect()">
+    <option value="">Choose a Pokemon</option>
+    <option *ngFor="let pokemon of pokemonList" [value]="pokemon">
+      {{ pokemon | formatText }}
+    </option>
+  </select>
+
+  <div *ngIf="pokemonDetails && pokemonSpecies" class="pokemon-details">
+    <h3>{{ pokemonDetails.name | formatText }}</h3>
+
+    <h4>Types:</h4>
+    <ul>
+      <li *ngFor="let type of pokemonDetails.types">
+        {{ type.type.name | formatText }}
+      </li>
+    </ul>
+
+    <h4>Abilities:</h4>
+    <ul>
+      <li *ngFor="let ability of pokemonDetails.abilities">
+        {{ ability.ability.name | formatText }}
+        <span *ngIf="ability.is_hidden">(Hidden Ability)</span>
+      </li>
+    </ul>
+
+    <h4>Games:</h4>
+    <ul>
+      <li *ngFor="let game of availableGames">
+        {{ game }}
+      </li>
+    </ul>
+
+    <h4>Evolution Chain:</h4>
+    <ul class="evolution-chain">
+      <li *ngFor="let evolution of evolutionChain; let i = index">
+        <span *ngIf="i > 0">→</span>
+        {{ evolution.species | formatText }}
+        <small *ngIf="i > 0">({{ evolution.evolutionDetails }})</small>
+      </li>
+    </ul>
+
+    <h4>Base Stats:</h4>
+    <ul>
+      <li *ngFor="let stat of pokemonDetails.stats">
+        {{ stat.stat.name | formatText }}: {{ stat.base_stat }}
+      </li>
+    </ul>
+
+    <h4>Height:</h4>
+    <p>{{ pokemonDetails.height / 10 }} m</p>
+
+    <h4>Weight:</h4>
+    <p>{{ pokemonDetails.weight / 10 }} kg</p>
+
+    <h4>Pokedex Entries:</h4>
+    <div *ngFor="let entry of pokedexEntries" class="pokedex-entry">
+      <h5>{{ entry.version }}</h5>
+      <p>{{ entry.description }}</p>
+    </div>
+  </div>
+</div>

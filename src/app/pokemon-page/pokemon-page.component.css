@@ -1,0 +1,44 @@
+.pokemon-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.pokemon-details {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+h2,
+h3,
+h4 {
+  margin-top: 0;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+.evolution-chain {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.evolution-chain li {
+  margin-right: 10px;
+}
+
+.evolution-chain small {
+  font-style: italic;
+  color: #666;
+}
